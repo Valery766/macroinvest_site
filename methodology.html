@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Методология — MacroInvest Edu</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="index.html" aria-label="MacroInvest Edu">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div class="name">MacroInvest Edu</div>
+          <div class="tag">Macro-Sim • обучение и симуляции</div>
+        </div>
+      </a>
+      <nav class="menu" aria-label="Навигация">
+        <a href="index.html">Главная</a>
+        <a href="programs.html">Программы</a>
+        <a href="simulators.html">Симуляторы</a>
+        <a href="methodology.html">Методология</a>
+        <a href="impact.html">Эффект</a>
+        <a href="faq.html">FAQ</a>
+        <a href="documents.html">Документы</a>
+      </nav>
+      <div class="actions">
+        <a class="btn" href="login.html" title="Демо-вход">Вход</a>
+        <a class="btn primary" href="app-lab-macro-portfolio.html">Открыть лабораторию</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="section">
+  <div class="container">
+    <h1 class="h1">Методология и данные</h1>
+    <p class="p">
+      Здесь фиксируются принципы воспроизводимости: версии данных, журнал изменений, правила контроля качества (QC) и реестр рядов.
+      Любой отчёт лабораторной содержит <code>dataset.version</code>, <code>as_of_date</code> и <code>integrity_hash</code>.
+    </p>
+
+    <div class="split">
+      <div class="card"><div class="pad" id="versions">
+        <h2 class="h2">Версии датасета</h2>
+        <table class="table">
+          <tr><th>Версия</th><th>as_of</th><th>Статус</th><th>Краткое изменение</th></tr>
+          <tr><td><b>2026.01</b></td><td>2026-01-31</td><td><span class="badge">published</span></td><td>Обновление CPI и денежного рынка; QC: WARN=0</td></tr>
+          <tr><td><b>2025.12</b></td><td>2025-12-31</td><td><span class="badge">published</span></td><td>Пересмотр индекса облигаций; QC: WARN=1 (ревизия)</td></tr>
+          <tr><td><b>2025.09</b></td><td>2025-09-30</td><td><span class="badge">published</span></td><td>Добавлены метаданные единиц; QC: WARN=0</td></tr>
+        </table>
+        <div class="hint">Примечание (демо): таблица иллюстративна; в продуктовой версии наполняется из <code>dataset_versions</code> и <code>qc_results</code>.</div>
+      </div></div>
+
+      <div class="card"><div class="pad">
+        <h2 class="h2">QC — контроль качества</h2>
+        <div class="tile">
+          <div class="t">BLOCK</div>
+          <div class="s">Дубли дат, немонотонность времени, пропуски &gt; 2%, несоответствие единиц/масштаба — публикация версии запрещена.</div>
+        </div>
+        <div style="height:10px"></div>
+        <div class="tile">
+          <div class="t">WARN</div>
+          <div class="s">Аномалии (MAD‑детектор), структурные разрывы, ревизии поставщика — версия публикуется с пометкой и пояснением.</div>
+        </div>
+        <div style="height:10px"></div>
+        <div class="tile">
+          <div class="t">INFO</div>
+          <div class="s">Изменения метаданных/формата без влияния на ряд.</div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="card" style="margin-top:12px"><div class="pad">
+      <h2 class="h2">Реестр рядов (Data Dictionary)</h2>
+      <table class="table">
+        <tr><th>series_id</th><th>Название</th><th>Частота</th><th>Единицы</th><th>Transform</th><th>Назначение</th></tr>
+        <tr><td><code>EQ_TR</code></td><td>Equity Total Return Proxy</td><td>M</td><td>index</td><td>log-return</td><td>доходность equity класса</td></tr>
+        <tr><td><code>BOND_TR</code></td><td>Bond Total Return Proxy</td><td>M</td><td>index</td><td>log-return</td><td>доходность bond класса</td></tr>
+        <tr><td><code>CASH_MM</code></td><td>Money Market Proxy</td><td>M</td><td>rate</td><td>rate→return</td><td>кэш/денежный рынок</td></tr>
+        <tr><td><code>CPI</code></td><td>Consumer Price Index</td><td>M</td><td>index</td><td>log-change</td><td>инфляция (для real)</td></tr>
+      </table>
+      <div class="hint">В продуктовой версии добавляются: источник (таблица/серия), политика ревизий, last_ingested_at, связь с dataset versions.</div>
+    </div></div>
+
+    <hr/>
+    <h2 class="h2">Воспроизводимость</h2>
+    <p class="p">
+      Отчёт лабораторной воспроизводим при фиксированных <code>dataset.integrity_hash</code> и <code>model_version</code>.
+      Это необходимо, чтобы изменения результатов объяснялись изменением входов/версий, а не «случайностью расчёта».
+    </p>
+  </div>
+</section>
+
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <div class="card"><div class="pad">
+    <div style="display:flex; justify-content:space-between; gap:12px; align-items:center;">
+      <div class="name" style="font-weight:700">Сообщение</div>
+      <button class="btn ghost" onclick="document.getElementById('toast').style.display='none'">Закрыть</button>
+    </div>
+    <div class="msg" id="toastMsg" style="margin-top:8px"></div>
+  </div></div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between">
+      <div>© 2026 MacroInvest Edu / Macro-Sim. Материалы носят учебно‑информационный характер и не являются индивидуальной инвестиционной рекомендацией.</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap">
+        <a href="documents.html#disclaimer">Отказ от ответственности</a>
+        <a href="documents.html#sources">Политика источников</a>
+        <a href="methodology.html#versions">Версии данных</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+
+</body>
+</html>

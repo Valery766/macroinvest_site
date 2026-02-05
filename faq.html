@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ — MacroInvest Edu</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="index.html" aria-label="MacroInvest Edu">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div class="name">MacroInvest Edu</div>
+          <div class="tag">Macro-Sim • обучение и симуляции</div>
+        </div>
+      </a>
+      <nav class="menu" aria-label="Навигация">
+        <a href="index.html">Главная</a>
+        <a href="programs.html">Программы</a>
+        <a href="simulators.html">Симуляторы</a>
+        <a href="methodology.html">Методология</a>
+        <a href="impact.html">Эффект</a>
+        <a href="faq.html">FAQ</a>
+        <a href="documents.html">Документы</a>
+      </nav>
+      <div class="actions">
+        <a class="btn" href="login.html" title="Демо-вход">Вход</a>
+        <a class="btn primary" href="app-lab-macro-portfolio.html">Открыть лабораторию</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="section">
+  <div class="container">
+    <h1 class="h1">FAQ</h1>
+
+    <div class="card"><div class="pad">
+      <h2 class="h2">Это индивидуальная инвестиционная рекомендация?</h2>
+      <p class="p">Нет. Сервис предназначен для обучения и моделирования: он показывает последствия решения в рамках заданной модели и фиксирует качество выполнения учебной задачи.</p>
+      <hr/>
+      <h2 class="h2">Почему вы не пишете «вам рекомендуется»?</h2>
+      <p class="p">Потому что формулировки «соответствует вашим целям/риску» могут быть интерпретированы как персональные рекомендации. Используются нейтральные термины: «симуляция», «учебный кейс», «оценка качества».</p>
+      <hr/>
+      <h2 class="h2">Можно ли торговать через платформу?</h2>
+      <p class="p">Нет. Платформа — sandbox‑лаборатория (paper). Она не является брокерской системой и не выдаёт торговые сигналы.</p>
+      <hr/>
+      <h2 class="h2">Почему важны версии данных?</h2>
+      <p class="p">Чтобы отчёты были воспроизводимыми: один и тот же кейс при одной и той же версии данных должен давать одинаковые результаты. Это важно для доверия и измеримости эффекта обучения.</p>
+    </div></div>
+
+    <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap">
+      <a class="btn primary" href="documents.html#disclaimer">Отказ от ответственности</a>
+      <a class="btn" href="methodology.html">Методология</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <div class="card"><div class="pad">
+    <div style="display:flex; justify-content:space-between; gap:12px; align-items:center;">
+      <div class="name" style="font-weight:700">Сообщение</div>
+      <button class="btn ghost" onclick="document.getElementById('toast').style.display='none'">Закрыть</button>
+    </div>
+    <div class="msg" id="toastMsg" style="margin-top:8px"></div>
+  </div></div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between">
+      <div>© 2026 MacroInvest Edu / Macro-Sim. Материалы носят учебно‑информационный характер и не являются индивидуальной инвестиционной рекомендацией.</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap">
+        <a href="documents.html#disclaimer">Отказ от ответственности</a>
+        <a href="documents.html#sources">Политика источников</a>
+        <a href="methodology.html#versions">Версии данных</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+
+</body>
+</html>

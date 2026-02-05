@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Симуляторы — MacroInvest Edu</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="index.html" aria-label="MacroInvest Edu">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div class="name">MacroInvest Edu</div>
+          <div class="tag">Macro-Sim • обучение и симуляции</div>
+        </div>
+      </a>
+      <nav class="menu" aria-label="Навигация">
+        <a href="index.html">Главная</a>
+        <a href="programs.html">Программы</a>
+        <a href="simulators.html">Симуляторы</a>
+        <a href="methodology.html">Методология</a>
+        <a href="impact.html">Эффект</a>
+        <a href="faq.html">FAQ</a>
+        <a href="documents.html">Документы</a>
+      </nav>
+      <div class="actions">
+        <a class="btn" href="login.html" title="Демо-вход">Вход</a>
+        <a class="btn primary" href="app-lab-macro-portfolio.html">Открыть лабораторию</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="section">
+  <div class="container">
+    <h1 class="h1">Симуляторы</h1>
+    <p class="p">Симуляторы предназначены для обучения: пользователь задаёт параметры и получает оценку последствий и качества решения в рамках модели. Это не торговые сигналы и не персональные рекомендации.</p>
+
+    <div class="cards">
+      <a class="tile" href="app-lab-macro-portfolio.html">
+        <div class="t">Macro→Portfolio Lab</div>
+        <div class="s">Входы: сценарий, риск‑профиль, горизонт, цель (real). Выход: метрики, стресс, score, отчёт (JSON/TXT).</div>
+      </a>
+      <a class="tile" href="app-lab-bond.html">
+        <div class="t">Bond Lab</div>
+        <div class="s">Входы: срок/купон/YTM, шок ставки. Выход: ΔP/P, вклад duration/convexity, стресс‑потери.</div>
+      </a>
+      <a class="tile" href="app-lab-risk.html">
+        <div class="t">Risk Lab</div>
+        <div class="s">Входы: веса классов, доверительный уровень. Выход: VaR/ES, стресс‑набор, вклад факторов.</div>
+      </a>
+      <a class="tile" href="app-lab-event.html">
+        <div class="t">Event‑Trading Lab (paper)</div>
+        <div class="s">Входы: правила around‑event, риск‑лимиты. Выход: распределение PnL на истории, устойчивость.</div>
+      </a>
+    </div>
+
+    <hr/>
+    <div class="card"><div class="pad">
+      <h2 class="h2">Экспорт и артефакты</h2>
+      <p class="p">Каждая лабораторная формирует снимок кейса: входы → версия данных → метрики → качество. В демо доступны экспорт JSON и TXT; PDF можно сформировать печатью страницы.</p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap">
+        <a class="btn primary" href="app-lab-macro-portfolio.html">Открыть Macro→Portfolio</a>
+        <a class="btn" href="documents.html#disclaimer">Отказ от ответственности</a>
+      </div>
+    </div></div>
+  </div>
+</section>
+
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <div class="card"><div class="pad">
+    <div style="display:flex; justify-content:space-between; gap:12px; align-items:center;">
+      <div class="name" style="font-weight:700">Сообщение</div>
+      <button class="btn ghost" onclick="document.getElementById('toast').style.display='none'">Закрыть</button>
+    </div>
+    <div class="msg" id="toastMsg" style="margin-top:8px"></div>
+  </div></div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between">
+      <div>© 2026 MacroInvest Edu / Macro-Sim. Материалы носят учебно‑информационный характер и не являются индивидуальной инвестиционной рекомендацией.</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap">
+        <a href="documents.html#disclaimer">Отказ от ответственности</a>
+        <a href="documents.html#sources">Политика источников</a>
+        <a href="methodology.html#versions">Версии данных</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+
+</body>
+</html>

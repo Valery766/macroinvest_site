@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Macro→Portfolio Lab — MacroInvest Edu</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="index.html" aria-label="MacroInvest Edu">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div class="name">MacroInvest Edu</div>
+          <div class="tag">Macro-Sim • обучение и симуляции</div>
+        </div>
+      </a>
+      <nav class="menu" aria-label="Навигация">
+        <a href="index.html">Главная</a>
+        <a href="programs.html">Программы</a>
+        <a href="simulators.html">Симуляторы</a>
+        <a href="methodology.html">Методология</a>
+        <a href="impact.html">Эффект</a>
+        <a href="faq.html">FAQ</a>
+        <a href="documents.html">Документы</a>
+      </nav>
+      <div class="actions">
+        <a class="btn" href="login.html" title="Демо-вход">Вход</a>
+        <a class="btn primary" href="app-lab-macro-portfolio.html">Открыть лабораторию</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="section" id="macroLab">
+  <div class="container">
+    <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap">
+      <div>
+        <h1 class="h1" style="margin-bottom:6px">Macro→Portfolio Lab</h1>
+        <div class="badge">Учебная симуляция • не является индивидуальной рекомендацией</div>
+      </div>
+      <div class="tile" style="max-width:520px">
+        <div class="t">Отчёт</div>
+        <div class="s">Report ID: <span style="font-family:var(--mono)" id="reportId">—</span><br/>
+          Dataset: <span style="font-family:var(--mono)" id="datasetInfo">—</span></div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px">
+          <button class="btn" id="btnPrint">Печать (PDF)</button>
+          <button class="btn" id="btnExport">Экспорт JSON/TXT</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="split" style="margin-top:12px">
+      <div class="card"><div class="pad">
+        <h2 class="h2">Входные параметры</h2>
+
+        <div class="row">
+          <div class="field">
+            <label>Сценарий макро‑режима</label>
+            <select id="scenario">
+              <option value="base">base — нейтральные допущения</option>
+              <option value="hawkish">hawkish — ужесточение условий</option>
+              <option value="dovish">dovish — смягчение условий</option>
+            </select>
+            <div class="hint">Сценарий задаёт стресс‑проверки и диапазоны метрик в рамках учебной модели.</div>
+          </div>
+          <div class="field">
+            <label>Учебный риск‑профиль</label>
+            <select id="riskProfile">
+              <option value="conservative">conservative — низкий риск</option>
+              <option value="moderate" selected>moderate — сбалансированный</option>
+              <option value="aggressive">aggressive — высокий риск</option>
+            </select>
+            <div class="hint">Профиль задаёт лимиты риска и критерии качества решения.</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label>Горизонт (лет)</label>
+            <input id="horizon" type="number" min="1" max="10" value="5" />
+            <div class="hint">Короткий горизонт усиливает требования к ликвидности и устойчивости.</div>
+          </div>
+          <div class="field">
+            <label>Цель в реальном выражении</label>
+            <select id="targetBand">
+              <option value="real_0_1">0–1% сверх инфляции</option>
+              <option value="real_2_3" selected>2–3% сверх инфляции</option>
+              <option value="real_4_6">4–6% сверх инфляции</option>
+            </select>
+            <div class="hint">Оценивается вероятность недостижения цели в симуляции.</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Версия данных (демо)</label>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center">
+            <select id="datasetVersion" style="max-width:220px">
+              <option value="2026.01" selected>2026.01</option>
+              <option value="2025.12">2025.12</option>
+              <option value="2025.09">2025.09</option>
+            </select>
+            <span class="badge">as_of <span id="datasetAsOf">2026-01-31</span></span>
+          </div>
+          <div class="hint">В продуктовой версии версии датасета публикуются после QC и имеют integrity_hash.</div>
+        </div>
+
+        <h2 class="h2" style="margin-top:14px">Веса классов (учебный портфель)</h2>
+        <div class="hint">Сумма должна быть 100%. Если сумма отличается, веса будут нормированы автоматически.</div>
+        <div class="weights" style="margin-top:10px">
+          <div class="wrow"><div class="k">Bonds</div><input id="w_bonds" type="range" min="0" max="100" value="45"/><input id="n_bonds" type="number" min="0" max="100" step="0.1" value="45.0"/></div>
+          <div class="wrow"><div class="k">Equity</div><input id="w_equity" type="range" min="0" max="100" value="40"/><input id="n_equity" type="number" min="0" max="100" step="0.1" value="40.0"/></div>
+          <div class="wrow"><div class="k">Cash</div><input id="w_cash" type="range" min="0" max="100" value="10"/><input id="n_cash" type="number" min="0" max="100" step="0.1" value="10.0"/></div>
+          <div class="wrow"><div class="k">Alt</div><input id="w_alt" type="range" min="0" max="100" value="5"/><input id="n_alt" type="number" min="0" max="100" step="0.1" value="5.0"/></div>
+        </div>
+        <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap; align-items:center">
+          <span class="badge">Сумма: <span id="wSum">100.0%</span></span>
+          <button class="btn" id="presetConservative">Пресет: conservative</button>
+          <button class="btn" id="presetBalanced">Пресет: balanced</button>
+          <button class="btn" id="presetAggressive">Пресет: aggressive</button>
+        </div>
+
+        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
+          <button class="btn primary" id="btnRun">Сформировать отчёт лабораторной</button>
+          <button class="btn" id="btnCompare">Сравнить сценарии</button>
+        </div>
+        <div class="hint" style="margin-top:10px">
+          Подсказка: <kbd>Сформировать отчёт</kbd> → затем <kbd>Экспорт JSON/TXT</kbd>. В отчёте фиксируются входы, версия данных и метрики.
+        </div>
+      </div></div>
+
+      <div class="card"><div class="pad">
+        <h2 class="h2">Результаты</h2>
+        <div class="out">
+          <div class="title">Модельное распределение (учебное)</div>
+          <div id="outWeights" class="hint">Пока нет результатов — сформируйте отчёт.</div>
+        </div>
+        <div style="height:10px"></div>
+        <div class="out">
+          <div class="title">Метрики</div>
+          <div id="outMetrics" class="hint">—</div>
+        </div>
+        <div style="height:10px"></div>
+        <div class="out">
+          <div class="title">Качество решения</div>
+          <div id="outQuality" class="hint">—</div>
+        </div>
+        <div style="height:10px"></div>
+        <div class="out">
+          <div class="title">Объяснимость и следующий шаг обучения</div>
+          <div id="outExplain" class="hint">—</div>
+        </div>
+      </div></div>
+    </div>
+
+    <section class="section" id="compareSection">
+      <div class="container" style="padding:0">
+        <div class="card"><div class="pad">
+          <h2 class="h2">Сравнение сценариев (при фиксированных весах)</h2>
+          <div class="hint">Таблица формируется после расчёта отчёта.</div>
+          <div id="compareBox" style="margin-top:10px"></div>
+        </div></div>
+      </div>
+    </section>
+  </div>
+</section>
+
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <div class="card"><div class="pad">
+    <div style="display:flex; justify-content:space-between; gap:12px; align-items:center;">
+      <div class="name" style="font-weight:700">Сообщение</div>
+      <button class="btn ghost" onclick="document.getElementById('toast').style.display='none'">Закрыть</button>
+    </div>
+    <div class="msg" id="toastMsg" style="margin-top:8px"></div>
+  </div></div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between">
+      <div>© 2026 MacroInvest Edu / Macro-Sim. Материалы носят учебно‑информационный характер и не являются индивидуальной инвестиционной рекомендацией.</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap">
+        <a href="documents.html#disclaimer">Отказ от ответственности</a>
+        <a href="documents.html#sources">Политика источников</a>
+        <a href="methodology.html#versions">Версии данных</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+<script src="assets/lab_macro_portfolio.js"></script>
+</body>
+</html>

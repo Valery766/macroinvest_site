@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Программы — MacroInvest Edu</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="index.html" aria-label="MacroInvest Edu">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div class="name">MacroInvest Edu</div>
+          <div class="tag">Macro-Sim • обучение и симуляции</div>
+        </div>
+      </a>
+      <nav class="menu" aria-label="Навигация">
+        <a href="index.html">Главная</a>
+        <a href="programs.html">Программы</a>
+        <a href="simulators.html">Симуляторы</a>
+        <a href="methodology.html">Методология</a>
+        <a href="impact.html">Эффект</a>
+        <a href="faq.html">FAQ</a>
+        <a href="documents.html">Документы</a>
+      </nav>
+      <div class="actions">
+        <a class="btn" href="login.html" title="Демо-вход">Вход</a>
+        <a class="btn primary" href="app-lab-macro-portfolio.html">Открыть лабораторию</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="section">
+  <div class="container">
+    <h1 class="h1">Программы</h1>
+    <p class="p">Траектории состоят из микро‑уроков (5–10 минут), практикумов в симуляторах и тестирования. По завершении формируется skill‑паспорт и сертификат (при выполнении критериев качества решений).</p>
+
+    <div class="cards" style="grid-template-columns:repeat(2,1fr)">
+      <div class="tile">
+        <div class="t">Инвестор‑база (4 недели)</div>
+        <div class="s">Цель/горизонт/риск, реальная доходность, базовая диверсификация. Лабораторные: Macro→Portfolio (2 кейса).</div>
+      </div>
+      <div class="tile">
+        <div class="t">Макро → портфель (5 недель)</div>
+        <div class="s">Сценарии ДКП и чувствительность решения. Лабораторные: сравнение base/hawkish/dovish.</div>
+      </div>
+      <div class="tile">
+        <div class="t">Облигации и дюрация (4 недели)</div>
+        <div class="s">Кривая доходности, процентный риск, дюрация/конвексность. Лабораторные: Bond Lab.</div>
+      </div>
+      <div class="tile">
+        <div class="t">Риск‑менеджмент (4 недели)</div>
+        <div class="s">Vol, VaR, ES, стресс‑тесты, риск‑бюджет. Лабораторные: Risk Lab + Portfolio Lab.</div>
+      </div>
+      <div class="tile">
+        <div class="t">Трейдинг вокруг макро‑событий (6 недель)</div>
+        <div class="s">Формализация правил, backtest (paper), устойчивость к издержкам и split‑sample. Лабораторные: Event‑Trading Lab.</div>
+      </div>
+      <div class="tile">
+        <div class="t">Сертификат</div>
+        <div class="s">Условия: post‑test ≥ порога; ≥ N лабораторных со score ≥ 7; отсутствие критических нарушений в финальном кейсе.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap">
+      <a class="btn primary" href="app-lab-macro-portfolio.html">Начать с лабораторной</a>
+      <a class="btn" href="faq.html">Смотреть FAQ</a>
+      <a class="btn" href="methodology.html">Методология и данные</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <div class="card"><div class="pad">
+    <div style="display:flex; justify-content:space-between; gap:12px; align-items:center;">
+      <div class="name" style="font-weight:700">Сообщение</div>
+      <button class="btn ghost" onclick="document.getElementById('toast').style.display='none'">Закрыть</button>
+    </div>
+    <div class="msg" id="toastMsg" style="margin-top:8px"></div>
+  </div></div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between">
+      <div>© 2026 MacroInvest Edu / Macro-Sim. Материалы носят учебно‑информационный характер и не являются индивидуальной инвестиционной рекомендацией.</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap">
+        <a href="documents.html#disclaimer">Отказ от ответственности</a>
+        <a href="documents.html#sources">Политика источников</a>
+        <a href="methodology.html#versions">Версии данных</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+
+</body>
+</html>
